@@ -1,0 +1,1136 @@
+/*
+Theme Name: Baris
+Theme URI: http://www.malvouz.com/omega/2012/12/16/baris-theme/
+Description: Baris is a responsive and minimalist. Build on HTML5 and CSS3. Great for desktop and mobile readers.
+Author: Malvouz
+Author URI: http://www.malvouz.com/omega/about/
+Version: 1.7.1
+Tags: white, light, one-column, custom-menu, custom-background, left-sidebar, right-sidebar, flexible-width, threaded-comments, sticky-post
+License: GNU/GPL Version 2 or later
+License URI: http://www.gnu.org/licenses/gpl.html
+*/
+
+/* Google Fonts Import
+--------------------------------------------- */
+@import url(https://fonts.googleapis.com/css?family=Lato:400,400italic,700,700italic);
+@import url(https://fonts.googleapis.com/css?family=Merriweather:400,400italic,700); /* note: no bold and italic */
+/* (EB) Garamond is like Hoefler, which I use for reading in Voice Reader */
+
+/* Reset
+--------------------------------------------- */
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
+	margin: 0;
+	padding: 0;
+	font-size: 100%;
+	vertical-align: baseline;
+	border: 0;
+	outline: 0;
+	background: transparent;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+
+/* General Structure and Styles
+--------------------------------------------- */
+body {
+	font-family: 'Lato', 'Helvetica Neue', Helvetica, sans-serif; /* todo: should try Merriweather Sans */
+	color: #4C4C4C;
+	background-color:#fff;
+}
+
+#container{
+	width:620px;
+	margin:50px auto 0 auto;
+	z-index:0;
+	overflow:hidden;
+}
+
+/* Header
+--------------------------------------------- */
+
+header{
+	text-align:center;
+	margin-top:55px; /* used to be bottom 50px */
+}
+
+/* don't use h1 for blog title anymore, todo: should create a span for it though */
+
+/* don't use, for blog description*/
+header p {
+	font-family:'Merriweather', Georgia, serif;
+	font-style:italic;
+	font-size:12px; /* todo: originally 13px, Merriweather */
+	/* margin-top:10px; */
+}
+
+/* note: override other css files here
+--------------------------------------- */
+
+/* note: these changes override superfish.css, they are part of the top navigation bar, which happens to be a list or table */
+/* note: I reduced the padding from 1em 2em */
+.sf-menu li a {
+	padding: 1em .5em 0em .5em;
+}
+
+/* note: I changed the font to serif */
+/* note: I used the footer subtle grayish colors, I think this is how it originally was */
+.sf-menu a {
+    color: #999;
+    font-size: 13px;
+    /* font-family: 'Merriweather', Georgia, serif; */
+}
+
+.sf-menu a:hover {
+    color: #4C4C4C;
+}
+
+.sf-menu li.current-menu-item a {
+    font-weight: bold;
+}
+
+/* note: I changed Table of Contents (TOC) plugin here */
+
+/* the container has margin-bottom but no margin-top */
+/* container contains the toc-title and the toc-list */
+#toc_container {
+	/* margin-top: 1em; */ /* ah funky situation. I normally use break lines before the TOC, so it's better without. */
+	/* text-align: center; */ /* nope, doesn't look good with nested lists, todo: though it would work great with non-nested lists */
+	width: 95% !important; // keep width at 95%, even when hiding
+}
+
+div#toc_container.have_bullets {
+    border: 2px solid rgb(225,225,225);
+    border-left: 8px solid rgb(225,225,225);
+    border-right: 8px solid rgb(225,225,225); /* matching to bullet color, made thicker on the sides */
+    background-image: url(http://www.rahilpatel.com/blog/wp-content/uploads/bedge_grunge.png);
+}
+
+/* remove the vertical space between "Table of Contents" and the contents */
+#toc_container p.toc_title+ul.toc_list {
+	margin-top: 0em !important; /* originally 1em */
+	/* margin-left: 2em; */
+}
+
+/* remove underline on hover */
+#toc_container a:hover {
+	text-decoration:none !important;
+}
+
+/* reduced the blue value of rgb by 5 */
+#toc_container a {
+	color: rgb(69, 143, 211);
+}
+
+/* to match uppercase serif headers, now it's looking book-like! */
+#toc_container li {
+	font-family:'Merriweather', Georgia, serif;
+	font-size: 12px !important; /* important to prioritize over "#content article ul li", which comes later in the code */
+}
+
+/* conflicts with adding a colored square before li, resulting in two bullets */
+/*
+#toc_container ul {
+        list-style-type: cjk-ideographic !important;
+        color: rgb(225,225,225);
+}
+
+#toc_container ul ul {
+        list-style-type: none !important;
+}
+*/
+
+#toc_container ul li {
+	text-transform: uppercase;
+}
+
+#toc_container ul ul li {
+	text-transform: none;
+}
+
+#toc_container p.toc_title {
+	font-family:'Merriweather', Georgia, serif;
+	font-size: 12px !important;
+}
+
+/* tried to add some padding to the left of the list, but it didn't work */
+#toc_container u.toc_list {
+	margin-left: 1em !important; /* note: I don't think this works */
+}
+
+#toc_container ul ul.toc_list {
+	margin-left: 1em !important; /* note: I don't think this works */
+}
+
+/* matching "Table of Contents" text to the style of headings */
+#toc_container span.toc_toggle {
+    font-weight: bold !important;
+    font-size: 100% !important;
+    color: white;
+}
+
+#toc_container span.toc_toggle a {
+    font-weight: bold !important;
+    font-size: 100% !important;
+    color: white;
+}
+
+/* note: adding show hide css classes here
+--------------------------------------------- */
+.plus:after {
+    content:" (+)";
+}
+.minus:after {
+    content:" (-)";
+}
+
+/* Content
+--------------------------------------------- */
+
+#content article {
+	margin-bottom:50px;
+	padding:0 0 2px 0;
+}
+
+#content article p {
+	font-size: 14px;
+	line-height:19px; /* note: originally 23px */
+	padding:0px 0px 15px 0px;
+}
+
+#content article p small {
+	font-size:13px;
+}
+#content blockquote {
+	margin:5px 0px 5px 0px; /* using this and overwritten the default <p> tag padding, using 5px instead of 10px because there is already a 10px margin */
+	padding:10px 0px 10px 10px; /* allows the left solid border to be 10px longer on the top and bottom, also removed the 10px bottom padding because <p> automatically adds a new line after a <p>, padding to the left and right should match padding of lists */
+	font-family:'Merriweather', Georgia, serif;
+	font-size:12px;
+	line-height:15px; /* reduced line height for that old book feel */
+	/*font-style:italic;*/
+        border-right:2px solid rgb(225,225,225);
+        border-left:8px solid rgb(225,225,225);
+	background-image: url(http://www.rahilpatel.com/blog/wp-content/uploads/bedge_grunge.png); /* originally none, http://www.rahilpatel.com/blog/wp-content/uploads/cork-wallet.png, http://www.rahilpatel.com/blog/wp-content/uploads/light_honeycomb.png, http://www.rahilpatel.com/blog/wp-content/uploads/solid.png, http://www.rahilpatel.com/blog/wp-content/uploads/retro_intro.png */
+}
+#content blockquote p {
+	/* padding:0 !important; */ /* note: got rid of this. It was eating the line breaks between paragraphs" */
+	font-size:12px; /* note: added this line for Merriweather font */
+	line-height:15px; /* note: for some reason, changing this in the general class didn't work, so added it here */
+	/* text-align: center; */ /* note: idea from Radcliffe theme, it makes sense for short quotes, but not long ones */
+	padding: 0px 0px 0px 0px; /* remove the default <p> padding after a paragraph, and use margin or padding for the blockquote class instead */
+}
+#content blockquote p cite {
+	padding:5px 0px 0px 10px; /* note: don't think the top padding works, using left padding instead of failed dash (see below) */
+	font-size: 12px;
+	/* keeping inherited line height to keep some space between cited text and blockquote */
+    	font-style: inherit; /* chrome was changing it to italics */
+	/* line-height:19px; */ /* currently this is inherited from the above blockquote p, can add space if desired here */
+}
+#content blockquote p cite: before {
+  content: '  — test  '; /* todo: not working at all, just padding for now */
+    position: relative;
+    left: 10px;
+    color: rgb(225,225,225);
+}
+#content address {
+	padding:0px 0px 20px 0px;
+	line-height:20px;
+}
+#content pre {
+	padding:0px 0px 20px 0px;
+}
+#content table {
+	margin:10px 0px 30px 0px;
+}
+#content table tr {
+	border-bottom:1px solid #4C4C4C;
+}
+#content table tr th {
+	padding: 10px 20px 10px 20px;
+	border-top:1px solid #4C4C4C;
+	border-left:1px solid #4C4C4C;
+	border-right:1px solid #4C4C4C;
+}
+#content table tr td {
+	padding: 10px 20px 10px 20px;
+	border-left:1px solid #4C4C4C;
+	border-right:1px solid #4C4C4C;
+}
+#content img {	
+}
+
+#content img.wp-post-image {
+	margin: 5px 15px 5px 0 !important;
+	padding: 0;
+	float: left;
+}
+#content img.wp-smiley {
+	display: inline;
+}
+#content img.alignleft {
+	margin: 5px 10px 10px 0px;
+}
+#content img.alignright {
+	margin: 5px 0px 5px 10px;
+}
+#content img.alignnone {
+	margin: 10px 0px 10px 0px;
+}
+#content .wp-caption {
+	max-width: 100%;
+	display: block;
+}
+#content p.wp-caption-text {
+	font-family:'Merriweather', Georgia, serif;
+	font-size:13px;
+	text-align:center;
+	line-height:18px;
+	padding:7px 0px 10px 0px;
+}
+#content object,
+#content embed,
+#content iframe {	
+	display: block;
+	max-width: 100%;
+	margin: 3px 0 10px 0;
+}
+/* I think this is used for the date / author, which comes below the post title */
+#content article p.meta {
+	margin:0px 0px 15px 0px;
+	padding:0px 0px 5px 0px;
+	font-size:12px;
+	line-height:12px;/* note: reduced to be close to the post title */
+	text-align:center; /* note: centering it like Radcliffe theme */
+	/* font-style:italic; */
+	clear:both;
+}
+#content article p.meta span {
+	padding:0px 0px 0px 0px;
+	font-family:'Merriweather', Georgia, serif;
+	font-size:10px; /* note: reduced to smallest size, todo: wished it were 8px*/
+	line-height:12px; /* note: reduced to be close to the post title, but didn't work here, so changing in the p.meta above */
+	color: #4C4C4C; /* note: temp fix: get rid of link color */
+}
+
+article-edit-link {
+	font-family:'Merriweather', Georgia, serif;
+	font-size:11px;
+	font-style:italic;
+}
+#content p.previous {
+	float:left;
+	font-size:12px;
+}
+#content p.next {
+	float:right;
+	font-size:12px;
+}
+
+#content article p.meta-date {
+	margin:0px 0px 0px 0px;
+	padding:0px 0px 5px 0px;
+	font-size:12px;
+	line-height:19px;
+	clear:both;
+}
+
+#content article p.meta-date span.separator{
+	padding: 0px 5px 0px 5px;
+}
+
+/* Image
+--------------------------------------------- */
+
+
+img.size-auto, img.size-full, img.size-large, img.size-medium, .attachment img, img {
+    max-width: 620px;
+}
+
+
+/* Single Post
+--------------------------------------------- */
+
+#content article #author-info {
+	margin:5px 0px 30px 0px;
+	padding:10px 0px 0px 0px;
+	background:url(image/debut_light.png);
+	overflow:hidden;
+}
+#content article #author-avatar {
+	margin:5px 15px 0px 15px;
+	float:left;
+}
+#content article #author-description {
+	overflow:hidden;
+}
+#content article #author-description h2 {
+	padding:0px;
+	font-family:'Merriweather', Georgia, serif;
+	font-size:11px;
+	font-weight:normal;
+}
+#content article #author-description h2 span {
+	font-weight:bold;
+	text-transform:uppercase;
+	letter-spacing:0.1em;
+}
+#content article #author-description p {
+	font-family:'Merriweather', Georgia, serif;
+	font-size:13px;
+	line-height:18px;
+	font-style:italic;
+	padding-top:3px;
+}
+
+.link-page {
+	font-family:'Merriweather', Georgia, serif;
+	font-size:13px;
+	line-height:18px;
+	font-style:italic;
+	margin-bottom:15px;
+}
+
+
+/* Page
+--------------------------------------------- */
+#content article h2.page{
+	margin-bottom:15px;
+}
+
+/* Sticky
+--------------------------------------------- */
+
+#content h3.sticky{
+	font-size:10.5px;
+	font-weight:normal;
+	padding:0;
+	text-transform:uppercase;
+	letter-spacing:2px;
+}
+
+/* Archives 
+--------------------------------------------- */
+h1.archive {
+	margin:0px 0px 25px 0px;
+	padding: 10px 0px 10px 10px;
+	font-family:'Merriweather', Georgia, serif;
+	font-size:13px;
+	font-weight:normal;
+	font-style:italic;
+	letter-spacing:0.1em;
+	background:url(image/debut_light.png);
+}
+
+/* Sidebar
+--------------------------------------------- */
+#container .sidebar-left, #container .sidebar-foot-left{
+	float:left;
+	margin-right:20px;
+	width:300px;
+}
+
+#container .sidebar-right, #container .sidebar-foot-right{
+	float:right;
+	width:300px;
+}
+
+#container .sidebar-foot-right, #container .sidebar-foot-left{
+	margin: 0px 0px 40px 0px;
+}
+
+.widget-wrapper{
+	margin:40px 0 0px 0;
+	clear:both;
+}
+
+.widget-wrapper h3.widget-title{
+	font-size:12px;
+	float:left;
+	letter-spacing:0.2em;
+	padding: 0 0 5px 0;
+}
+
+/* Default Widgets
+--------------------------------------------- */
+
+/* note: my changes to widget styles */
+/* this is actually a from the plugin, widgets on page */
+/* eh, too much of a mess, I tried though */
+.widgets_on_page ul li:before {
+	/* content:none !important; */ /* the bullets were coming a line above the headers, so I'm removing them altogether from the widget list */
+}
+
+.widget_archive ul li, .widget_pages ul li.page_item, .widget_categories ul li.cat-item, .widget_links ul.blogroll li, .widget_recent_entries ul li, .widget_recent_comments ul#recentcomments li.recentcomments, ul.menu li, .widget_meta ul li, .widget_rss ul li{
+	/* font-size:13px;
+	text-align:left;
+	padding:3px 0 0 5px; */ /* getting rid of all styles */
+}
+
+.tagcloud{
+	float:left;
+	margin-bottom:30px;
+}
+
+.widget_archive select, .widget_categories select{
+	float:left;
+}
+
+.textwidget{
+	font-size: 14px;
+    line-height: 23px;
+    padding: 0 0 15px;
+	text-align:left;
+	letter-spacing:0.1em;
+	font-style:italic;
+}
+
+/* --- Search Widget --- */
+.search-input {
+	
+	width: 125px;
+	margin:0px 0px 40px 0px;
+	font-size:12px;
+	float:left;
+	
+}
+#searchsubmit {
+	margin:0 0 0 5px;
+	padding:2px 4px 2px 4px;
+	float:left;
+	background:#468aff;
+	border:none;
+	font-size:12px;
+	color:#fff;
+	cursor:pointer;
+	
+}
+
+/* --- Calendar Widget --- */
+table#wp-calendar caption {
+	font-family:'Merriweather', Georgia, serif;
+	font-size:11px;
+	line-height:18px;
+	font-style:italic;
+	text-align:left;
+	padding:0px 0px 3px 0px;
+}
+table#wp-calendar td {
+	padding:3px;
+}
+
+
+/* Author Comments
+--------------------------------------------- */
+
+.authcomment {
+	background: url(image/debut_light.png) !important;
+	padding:8px 8px 8px 8px;
+}
+
+.bypostauthor{
+}
+
+/* Comments
+--------------------------------------------- */
+
+article .comments-content {
+	margin:6px 0px 0px 0px;
+	border-top:4px solid #f0f0f0;
+}
+#content article #comments-content h3#comments {
+	padding:80px 0px 8px 0px;
+	font-size:16px;
+}
+#comments-content .comment-body p {
+	padding:0px 0px 10px 0px;
+	font-size:13px;
+	line-height:19px;
+}
+#comments-content p.moderation {
+	font-family:'Merriweather', Georgia, serif;
+	font-size:11px;
+	font-style:italic;
+	color:#999;
+}
+#content article #comments-content ol,
+#content #page #comments-content ol {
+	padding:0px;
+}
+#content article #comments-content ol li ul.children,
+#content #page #comments-content ol li ul.children  {
+	padding:0px;
+}
+#content article #comments-content ol li.depth-1 {
+	padding:25px 0px 25px 0px;
+	border-bottom:4px solid #f0f0f0;
+	overflow:hidden;
+}
+#comments-content ol li.depth-2,
+#content #page #comments-content ol li.depth-2,
+#comments-content ol li.depth-3,
+#content #page #comments-content ol li.depth-3,
+#comments-content ol li.depth-4,
+#content #page #comments-content ol li.depth-4,
+#comments-content ol li.depth-5,
+#content #page #comments-content ol li.depth-5 {
+	margin:10px 0px 0px 30px;
+	padding:25px 0px 0px 0px;
+	border-top:4px solid #f0f0f0;
+	border-bottom:none;
+	overflow:hidden;
+}
+.comment-meta {
+	padding:0px 0px 10px 0px;
+	font-family:'Merriweather', Georgia, serif;
+	font-size:11px;
+	font-style:italic;
+}
+.comment-gravatar {
+	margin:1px 15px 0px 0px;
+	float:left;
+}
+#comments-content .comment-body {
+	padding:0px;
+	overflow:hidden;
+}
+.reply {
+	margin:0px 0px 0px 0px;
+	float:right;
+}
+a.comment-reply-link {
+	font-size:12px;
+	font-weight:bold;
+}
+p.logged-in-as {
+	font-family:'Merriweather', Georgia, serif;
+	font-size:11px;
+	font-style:italic;
+}
+#comments-content ol li.post.pingback {
+	margin:0px;
+	padding: 20px 0px 20px 60px;
+	list-style:none;
+}
+#content #comments-content .comment-body ol {
+	padding:6px 0 6px 30px;
+	line-height: 1.3;
+}
+#content #comments-content .comment-body ol li {
+	list-style: decimal !important;
+}
+#content #comments-content .comment-body ol li ol li {
+	list-style: upper-alpha !important;
+}
+#content #comments-content .comment-body ol li ol ol li{
+	list-style: lower-roman !important;
+}
+
+.visitor-comment a.url{
+	color:#468ACA;
+}
+
+.visitor-comment a.url:hover{
+	text-decoration:none;
+}
+
+/* --- Comment Reply --- */
+a#cancel-comment-reply-link {
+	padding:3px 0px 0px 0px;
+	float:right;
+	font-size:12px;
+}
+#content article #comments-content #respond h3#reply-title {
+	padding:80px 0px 6px 0px;
+	font-size:16px;
+}
+#content article form#commentform p {
+	font-size:14px;
+}
+form#commentform p.comment-notes {
+	padding:5px 0px 15px 0px;
+	font-family:'Merriweather', Georgia, serif;
+	font-size:9px;
+	font-style:italic;
+}
+form#commentform input#author, form#commentform input#email, form#commentform input#url {
+	height:22px;
+	display: block;
+}
+form#commentform textarea#comment {
+	width:100%;
+	padding:3px;
+}
+form#commentform p.comment-form-author, form#commentform p.comment-form-email, form#commentform p.comment-form-url, form#commentform p.comment-form-comment {
+	padding:10px 0px 0px 0px;
+	
+}
+form#commentform p.form-submit input#submit {
+	margin:8px 0px 10px 1px;
+	padding:6px 8px 6px 8px;
+	background:#4C4C4C;
+	border:none;
+	font-size:12px;
+	color:#fff;
+	cursor:pointer;
+}
+/* --- Comments Navigation --- */
+.nav-previous {
+	float:left;
+	margin:20px 0 0 0;
+}
+.nav-next {
+	float:right;
+	margin:20px 0 0 0;
+}
+
+/* Gallery
+--------------------------------------------- */
+.gallery {
+	margin: auto;
+	padding:5px 0px 5px 0px;
+}
+.gallery .gallery-item {
+	float: left;
+	margin: 10px 5px 0px 5px;
+	text-align: center;
+	width: 30%;
+	vertical-align: top;
+}
+.gallery img {
+	border: 1px solid #cfcfcf;
+	padding:3px;
+}
+.gallery .gallery-caption {
+	margin-left: 0;
+	padding: 3px 0px 8px 0px;
+	font-family:'Merriweather', Georgia, serif;
+	font-size: 11px;
+	line-height: 18px;
+	letter-spacing:0.1em;
+}
+
+/* Menu
+--------------------------------------------- */
+
+.header-nav {
+	text-align: center;
+}
+
+/* Bottom Menu */
+.footer-nav {
+	text-align: center;
+	margin-bottom:40px;
+}
+
+.botnav {margin:5px 0;}
+
+.botnav li{
+	display: inline-block;
+}
+
+.botnav li  a{
+	display: block; padding-right: 35px; padding-bottom:20px;
+}
+
+.botnav li:last-child a{
+	padding-right:0;
+}
+
+.botnav li ul {
+	display:none;
+}
+
+	
+	
+/* Footer
+--------------------------------------------- */
+footer {
+	width:100%;
+	padding: 50px 0px 50px 0px;
+	clear: both;
+	font-size: 12px;
+	overflow:hidden;
+	text-align:center;
+}
+
+footer p {
+	line-height:19px;
+	color: #999; /* note: I added this to keep consistent with the navigation bar text in the header */
+}
+
+footer a {
+	color: #4A4A4A; /* note: I added this to keep consistent with the navigation bar text in the header */
+}
+
+/* Alignment
+--------------------------------------------- */
+.alignleft {
+	display: inline;
+	float:left;
+	margin-right: 10px;
+}
+.alignright {
+	display: inline;
+	float: right;
+	margin-left: 10px;
+}
+.aligncenter {
+	clear: both;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+img.alignleft,
+img.alignright,
+img.aligncenter {
+    margin-bottom: 10px;
+}
+
+/* Links
+--------------------------------------------- */
+
+header h1 a{
+	color:#4A4A4A;
+}
+
+header h1 a:hover{
+	text-decoration:none;
+}
+
+/* Headings
+--------------------------------------------- */
+
+/*  used for the post title, which is the most important text
+    used original h2 style for h1, note: I think it was originally serif, and larger font size */
+#content h1 {
+	padding:0px 0px 0px 0px;
+	font-size: 16px; /* fallback in case vw is not supported by browser */
+	line-height: 15px; /* fallback in case vw is not supported by browser, note: reduced */
+	font-size: 4vh; /* note: fit to two lines with 4vh, fit to three lines with 6vh (using library computer screen as test for max height), Radcliffe theme like fit text size and width to container*/
+	line-height: 1.25em;
+	text-align:center; /* note: centering it like Radcliffe theme */
+    	font-family: 'Merriweather', Georgia, serif; /* note: changed to serif, may have originally been serif though */
+	/* text-transform: uppercase; */ /* note: tried this, but just seems too loud */
+}
+
+/* I copied the style from "#content article p" */
+#content article h2, h3, h4, h5, h6 {
+	font-size: 12px;
+	/* line-height:23px; */
+	/*padding:0px 0px 15px 0px;*/
+	/* color: rgb(230,230,230); */ /* I first used ddd (221), eee (238) is a little brighter, black works too*/
+	/* text-transform: uppercase; */ /* note: idea from Hofffman theme, tried this, looks great, especially makes sense here, even if a bit loud */
+	font-family:'Merriweather', Georgia, serif;
+}
+
+/* changing levels of gray to distinguish headers
+   because I find differences in vertical arrangement annoying during reading */
+h2 {
+        text-transform: uppercase;
+	color: rgb(255,255,255);
+}
+h3 {
+	color: rgb(245,245,245);
+}
+h4 {
+	color: rgb(235,235,235);
+}
+h5 {
+	color: rgb(225,225,225);
+}
+h6 {
+	color: rgb(225,225,225);
+	font-weight: normal;
+}
+
+h2:hover {
+	cursor: pointer;
+	cursor: hand;
+}
+
+/* adding a bullet for each heading level
+   because I find differences in vertical arrangement annoying during reading
+   the content used to be music notes, but the squares were a bit more readable
+   now I use color grading */
+/*
+h1:before {
+  
+}
+h2:before {
+  content: '■ ';
+    position: relative;
+    bottom: .1em;
+    color: color: rgb(225,225,225); 
+}
+h3:before {
+  content: '■■ ';
+    position: relative;
+    bottom: .1em;
+    color: color: rgb(225,225,225);
+}
+h4:before {
+  content: '■■■ ';
+    position: relative;
+    bottom: .1em;
+    color: color: rgb(225,225,225);
+}
+h5:before {
+  content: '■■■■ ';
+    position: relative;
+    bottom: .1em;
+    color: color: rgb(225,225,225);
+}
+h6:before {
+  content: '■■■■■ ';
+    position: relative;
+    bottom: .1em;
+    color: color: rgb(225,225,225);
+}
+*/
+
+/* note: adding a semicolon for to the end of every header within the content of a post 
+   removed this with the new color grading headers */
+/*
+h2:after,
+h3:after,
+h4:after,
+h5:after,
+h6:after {
+  content: ':';
+}
+*/
+
+/* backup of original header style
+#content article h1 {
+	padding:0px 0px 0px 0px;
+	font-size: 22px;
+	line-height:28px;
+}
+#content h2 {
+	padding:0px 0px 0px 0px;
+	font-size: 18px;
+	line-height:26px;
+}
+#content h3 {
+	padding:0px 0px 2px 0px;
+	font-size: 16px;
+	line-height:24px;
+}
+#content h4 {
+	padding:0px 0px 2px 0px;
+	font-size: 15px;
+	line-height:21px;
+}
+#content h5 {
+	padding:0px 0px 2px 0px;
+	font-size: 14px;
+	line-height:20px;
+}
+#content h6 {
+	padding:0px 0px 2px 0px;
+	font-size: 13px;
+	line-height:19px;
+}
+*/
+
+/* Lists
+--------------------------------------------- */
+
+/* todo: style for List Category Posts plugin*/
+#content ul.lcp_catlist {
+	/*padding:0px 0px 0px 0px;*/ /* removes bullet point - works */
+}
+#content ul.lcp_catlist li {
+	/*list-style-type:none;*/ /* removes bullet point - doesn't work */
+}
+
+#content article ul, #content article ul {
+	/* padding:0px 0px 0px 25px; */
+	list-style: none; /* removed this so that I could add color to the square bullet */
+}
+
+#content article ul li, #content article ul li {
+	padding-left: 16px; /* originally 20px */
+	font-size: 14px;
+	/*line-height:23px;*/
+	/* list-style: square !important; */ /* removed this so that I could add color to the square bullet */
+    	list-style-position: inside; /* for hanging / aligning text */
+    	text-indent: -16px; /* for hanging / aligning text */
+}
+#content article ul li:before {
+    content: "■";
+    padding-right: 8px; /* about 8px + 2px square */
+    color: rgb(225,225,225);
+}
+
+#content article ol, #content article ol {
+	padding:20px 0px 0px 30px;
+}
+#content article ol li, #content article ol li {
+	padding:0px 0px 20px 0px;
+	font-size: 14px;
+	line-height:23px;
+	list-style:cjk-ideographic; /* originally decimal; */
+}
+#content  article ol ol li, #content article ol li ol li {
+	list-style: lower-greek !important; /* originally upper-alpha */
+}
+#content  article ol ol ol li, #content article ol li ol ol li{
+	list-style: lower-roman !important;
+}
+
+/* --- Link --- */
+#content h2 a {
+	color:#468ACA;
+}
+a, #content h2 a:hover{
+	text-decoration:none;
+}
+a:hover {
+	text-decoration:none; /* note: original text-decoration:underline; */
+	color: #CA4648; /* alternatives: #CA4648; (complementary red to blue) #4A4A4A; #999 */
+}
+/* --- Link Colors --- */
+a, ul.sidebar li.widget_text a {
+	color:#468ACA; /* #999 was too light */
+}
+ul.sidebar a, p.meta-date a, .comment-meta a, p.logged-in-as a, aarticle-edit-link, #footer a {
+	color:#999;
+}
+#content h2 a:hover, ul.sidebar a:hover, .comment-meta a:hover, p.logged-in-as a:hover, p.meta-date a:hover, aarticle-edit-link:hover, #footer a:hover {
+	text-decoration:none;
+	color:#4A4A4A;
+}
+#searchsubmit:hover, form#commentform p.form-submit input#submit:hover, input.wpcf7-submit:hover  {
+	text-decoration:none;
+	background:#4A4A4A;
+}
+
+/* FLOATS CLEARING
+--------------------------------------------- */
+.clear {
+	clear:both;
+	display:block;
+	overflow:hidden;
+	visibility:hidden;
+	width:0;
+	height:0;
+}
+.clearfix:after {
+	clear:both;
+	content:' ';
+	display:block;
+	font-size:0;
+	line-height:0;
+	visibility:hidden;
+	width:0;
+	height:0
+}
+
+/* Responsiveness
+--------------------------------------------- */
+
+/* --------------------------------------------
+   Tablet Landscape
+-------------------------------------------- */		
+@media screen and (max-width: 870px){
+	
+
+}
+
+/* --------------------------------------------
+   Tablet Portrait
+-------------------------------------------- */
+@media screen and (max-width: 770px){
+	#content { float: none;  margin: 0 0 12px 0;
+	}	
+}
+
+/* --------------------------------------------
+  Mobile
+-------------------------------------------- */
+
+@media screen and (max-width: 620px) {
+
+	header{
+		text-align:center; /* failed to align the unordered list navigation menu */
+		margin-bottom:0px; /* was 50px, no idea why */
+	}
+
+	/* note: these two changes override superfish.css, I think */
+	/* note: I further reduced the padding for mobile */
+
+	#header-nav {
+		text-align: center; /* todo: fail. Horizontal ul is weird. Tried these solutions to no avail: http://stackoverflow.com/questions/2865380/how-do-i-center-align-horizontal-ul-menu */
+	}
+
+	.sf-menu li a {
+		padding: .5em .5em 0em .5em;
+	}
+
+	/* currently two lines for desktop too */
+	/* 6vh for three lines for desktop, 4vh for two lines for mobile */
+	/*
+	#content h1 {
+  		font-size: 16px;
+   		font-size: 4vh;
+	}
+	*/
+
+	#container, #content {
+		float: none;
+		width: auto;
+	}
+	#content {
+		margin: 0 15px 0 15px;
+	}
+	
+	.gallery .gallery-item {
+		margin: 0px 0px 0px 0px;
+		padding:0px 0px 0px 0px;
+		text-align: center;
+		width: 100%;
+		float:none;
+		vertical-align:top;
+	}
+	
+	.gallery img {
+		border:none;
+		padding:0px 0px 0px 0px;
+		margin:0px 0px 0px 0px;
+	}
+	
+	.gallery .gallery-caption {
+		margin: 0px 0px 0px 0px;
+		padding: 0px 0px 30px 0px;
+		font-family:'Merriweather', Georgia, serif;
+		font-size: 11px;
+		line-height: 10px;
+		letter-spacing:0.1em;
+	}
+	
+	#container .sidebar-left, #container .sidebar-foot-left{
+		float:none;
+		width:100%;
+	}
+
+	#container .sidebar-right, #container .sidebar-foot-right{
+		float:none;
+		width:100%;
+	}
+	
+	.widget-wrapper{
+		margin:30px 10px 10px 10px;
+		padding:0px 0px 40px 0px;
+		clear:both;
+	}
+	
+}

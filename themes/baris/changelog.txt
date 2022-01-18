@@ -1,0 +1,22 @@
+/***
+
+Baris Theme by Malvouz
+Visit http://www.malvouz.com/omega
+
+***/
+
+version 1.0 December 26, 2012
+-----------------------------
+o> first released
+
+
+version 1.5 Februari 7, 2013
+-----------------------------
+o> fix bug on metapost
+
+
+version 1.6 March 3, 2013
+-----------------------------
+o> fix bug on metapost
+o> fix bug on website title
+o> fix bug on comment's page
