@@ -1,5 +1,5 @@
 # rahils-theme
-Rahil’s theme. My Wordpress theme, since middle school (circa 2003-2005).
+My Wordpress theme for my site ‘rahil’s notepad’, since middle school (circa 2003-2005).
 
 https://github.com/rahil627/rahils-notepad
 
